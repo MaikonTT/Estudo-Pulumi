@@ -1,0 +1,11 @@
+name: my_first_app
+description: A minimal Pulumi YAML program
+runtime: yaml
+configuration: {}
+variables: {}
+resources:
+  backend-image:
+    type: docker:index:RemoteImage
+    properties:
+      name: pulumi/tutorial-pulumi-fundamentals-backend:latest
+outputs: {}
