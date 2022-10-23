@@ -1,2 +1,5 @@
 config:
   docker:host: npipe:////.//pipe//docker_engine
+  my_first_app:backendPort: "3000"
+  my_first_app:frontendPort: "3001"
+  my_first_app:mongoPort: "27017"
