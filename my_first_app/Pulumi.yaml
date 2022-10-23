@@ -9,6 +9,14 @@ configuration:
     type: Number
   mongoPort:
     type: Number
+  mongoHost:
+    type: String
+  database:
+    type: String
+  nodeEnvironment:
+    type: String
+  protocol:
+    type: String
 variables:
   backendImageName: backend
   frontendImageName: frontend
