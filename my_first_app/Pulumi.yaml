@@ -68,4 +68,21 @@ mongo-container:
     networkAdvanced: 
     - name: ${network.name}
       aliases: ["mongo"]
+frontend-container:
+  type: docker:index:Container
+  properties:
+    name: ${frontendImageName}-${pulumi.stack}
+    image: ${frontend-image.repoDigest}
+    ports:
+    - internal: ${frontendPort}
+      external: ${frontendPort}
+    envs:
+      [
+        "LISTEN_PORT=${frontendPort}",
+        "HTTP_PROXY=backend-${pulumi.stack}:${backendPort}",
+        "PROXY_PROTOCOL=${protocol}"
+      ]
+    networkAdvanced:
+    - name: ${network.name}
+      aliases: ["${frontendImageName}-${pulumi.stack}"]
 outputs: {}
