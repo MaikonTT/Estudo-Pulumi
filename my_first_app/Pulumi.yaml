@@ -8,4 +8,8 @@ resources:
     type: docker:index:RemoteImage
     properties:
       name: pulumi/tutorial-pulumi-fundamentals-backend:latest
+  frontend-image:
+    type: docker:index:RemoteImage
+    properties:
+      name: pulumi/tutorial-pulumi-fundamentals-frontend:latest
 outputs: {}
