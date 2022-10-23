@@ -57,4 +57,15 @@ backend-container:
 options:
   dependsOn:
   - ${mongo-container }
+mongo-container:
+  type: docker:index:Container
+  properties:
+    name: mongo-${pulumi.stack}
+    imagem: ${mongo-image.repoDigest}
+    ports: 
+    - internal: ${mongoPort}
+      external: ${mongoPort}
+    networkAdvanced: 
+    - name: ${network.name}
+      aliases: ["mongo"]
 outputs: {}
