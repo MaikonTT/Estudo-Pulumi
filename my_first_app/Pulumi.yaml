@@ -54,7 +54,7 @@ backend-container:
     networkAdvanced:
     - name: ${network.name}
       aliases: ["${backendImageName}-${pulumi.stack}"]
-options:
+  options:
   dependsOn:
   - ${mongo-container }
 mongo-container:
