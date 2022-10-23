@@ -25,4 +25,28 @@ resources:
     type: docker:index:RemoteImage
     properties:
       name: pulumi/tutorial-pulumi-fundamentals-database-local:latest
+network:
+  type: docker:index:Network
+  properties:
+    name: serivces-${pulumi.stack}
+backend-container:
+  type: docker:index:Container
+  properties:
+    name: ${backendImageName}-${pulumi.stack}
+    image: ${backend-image.repoDigest}
+    ports:
+    - internal: ${backendPort}
+      external: ${backendPort}
+    envs:
+      [
+        "DATABASE_HOST=${mongoHost}",
+        "DATABASE_NAME=${database}",
+        "NODE_ENV=${nodeEnvironment}"
+      ]
+    networkAdvanced:
+    - name: ${network.name}
+      aliases: ["${backendImageName}-${pulumi.stack}"]
+options:
+  dependsOn:
+  - ${mongo-container }
 outputs: {}
