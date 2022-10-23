@@ -1,8 +1,17 @@
 name: my_first_app
 description: A minimal Pulumi YAML program
 runtime: yaml
-configuration: {}
-variables: {}
+
+configuration:
+  frontendPort:
+    type: Number
+  backendPort:
+    type: Number
+  mongoPort:
+    type: Number
+variables:
+  backendImageName: backend
+  frontendImageName: frontend
 resources:
   backend-image:
     type: docker:index:RemoteImage
